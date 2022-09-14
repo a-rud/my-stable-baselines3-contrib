@@ -65,9 +65,9 @@ class TimeFeatureWrapper(gym.Wrapper):
         self._current_step = 0
         self._test_mode = test_mode
 
-    def reset(self) -> GymObs:
+    def reset(self, **kwargs) -> GymObs:
         self._current_step = 0
-        return self._get_obs(self.env.reset())
+        return self._get_obs(self.env.reset(**kwargs))
 
     def step(self, action: Union[int, np.ndarray]) -> GymStepReturn:
         self._current_step += 1
